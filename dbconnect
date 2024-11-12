@@ -1,0 +1,14 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $payment = $_POST['payment'];
+
+    // Here you'd add code to process and store the order.
+    // For example, you might insert it into a database.
+
+    echo "Order received! Thank you, $name. Your order will be delivered to $address.";
+} else {
+    echo "Invalid request.";
+}
+?>

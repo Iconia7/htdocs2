@@ -1,0 +1,22 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Retrieve customer and cart data
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $payment = $_POST['payment'];
+    $cartData = json_decode($_POST['cart_data'], true); // Decode the cart data JSON
+
+    // Example of order processing (this can be customized or extended)
+    echo "<h1>Order Confirmation</h1>";
+    echo "<p>Thank you, $name! Your order has been placed and will be delivered to $address.</p>";
+    echo "<h2>Order Summary</h2>";
+    foreach ($cartData as $item) {
+        echo "<p>{$item['name']} - Quantity: {$item['quantity']} - Price: $" . ($item['price'] * $item['quantity']) . "</p>";
+    }
+    echo "<p><strong>Total:</strong> $" . array_sum(array_map(function($item) {
+        return $item['price'] * $item['quantity'];
+    }, $cartData)) . "</p>";
+} else {
+    echo "Invalid request.";
+}
+?>
