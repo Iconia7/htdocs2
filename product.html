@@ -7,50 +7,90 @@
     <link rel="stylesheet" href="css/pstyle.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <header>
         <nav class="navbar">
-            <img src="images/Logo.png" alt="Fresh Cart Logo" class="logo">
-            <a href="index.html">Home</a>
-            <a href="product.html">Products</a>
-            <a href="cart.html">Cart</a>
+            <div class="logo-container">
+                <img src="images/Logo.png" alt="Fresh Cart Logo" class="logo">
+                <a href="index.html" class="brand-name">Fresh Cart</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="cart.html">Cart</a>
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Search Products..." onkeyup="searchProducts()">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
         </nav>
     </header>
 
+    <!-- Product Section -->
     <section class="products">
         <h2>Our Products</h2>
-        <div class="product-list">
-            <div class="product" data-id="1" data-price="5.99">
+
+        <!-- Sorting and Filtering Section -->
+        <div class="filters">
+            <label for="sortBy">Sort by: </label>
+            <select id="sortBy" onchange="sortProducts()">
+                <option value="priceAsc">Price: Low to High</option>
+                <option value="priceDesc">Price: High to Low</option>
+                <option value="name">Name: A to Z</option>
+            </select>
+
+            <label for="category">Category: </label>
+            <select id="category" onchange="filterProducts()">
+                <option value="all">All</option>
+                <option value="fruits">Fruits</option>
+                <option value="dairy">Dairy</option>
+                <option value="bakery">Bakery</option>
+            </select>
+        </div>
+
+        <div class="product-list" id="productList">
+            <div class="product" data-category="fruits" data-id="1" data-price="5.99">
                 <img src="images/Apple.jpg" alt="Apples">
                 <h3>Fresh Apples</h3>
                 <p>$5.99</p>
                 <button onclick="addToCart(1, 'Fresh Apples', 5.99)" class="btn-add-cart">Add to Cart</button>
             </div>
-            <div class="product" data-id="2" data-price="2.99">
+            <div class="product" data-category="fruits" data-id="2" data-price="2.99">
                 <img src="images/Banana.jpg" alt="Bananas">
                 <h3>Bananas</h3>
                 <p>$2.99</p>
                 <button onclick="addToCart(2, 'Bananas', 2.99)" class="btn-add-cart">Add to Cart</button>
             </div>
-            <div class="product" data-id="3" data-price="4.50">
+            <div class="product" data-category="dairy" data-id="3" data-price="4.50">
                 <img src="images/Milk.jpg" alt="Milk">
                 <h3>Organic Milk</h3>
                 <p>$4.50</p>
                 <button onclick="addToCart(3, 'Organic Milk', 4.50)" class="btn-add-cart">Add to Cart</button>
             </div>
-            <div class="product" data-id="4" data-price="3.00">
+            <div class="product" data-category="bakery" data-id="4" data-price="3.00">
                 <img src="images/Bread.jpg" alt="Bread">
                 <h3>Whole Wheat Bread</h3>
                 <p>$3.00</p>
                 <button onclick="addToCart(4, 'Whole Wheat Bread', 3.00)" class="btn-add-cart">Add to Cart</button>
             </div>
         </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="page-btn">Previous</button>
+            <button class="page-btn">Next</button>
+        </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Fresh Cart Delivery</p>
     </footer>
+
+    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
