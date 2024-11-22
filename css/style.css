@@ -109,7 +109,7 @@ header, footer {
     padding: 0.2rem 0.5rem;
     position: absolute;
     top: -5px;
-    right: -15px;
+    right: 15px;
 }
 
 .hero {
